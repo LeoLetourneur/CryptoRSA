@@ -24,11 +24,6 @@ public class Assailant extends Actor {
 		System.out.println("e => "+e);
 		System.out.println("n => "+n);
 		
-		//BigInteger up = msg2.pow(e.intValue()).add(new BigInteger("2").multiply(msg1.pow(e.intValue()))).subtract(BigInteger.ONE);
-		//BigInteger down = msg2.pow(e.intValue()).subtract(msg1.pow(e.intValue())).add(new BigInteger("2"));
-		
-		//response = up.divide(down).mod(n);
-		
 		response = msg2.subtract(msg1).add(new BigInteger("2")).modInverse(n)
                 .multiply(msg2.add(msg1.multiply(new BigInteger("2"))).subtract(new BigInteger("1")))
                 .mod(n);
