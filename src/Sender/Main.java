@@ -10,7 +10,10 @@ public class Main {
 		Receiver bob = new Receiver("Bob");
 		Assailant oscar = new Assailant("Oscar");
 		
-		BigInteger texteBig = new BigInteger("1317");
+		String sentence = "Salut c'est Jack";
+		System.out.println("Texte à transmettre : " +sentence);
+		
+		BigInteger texteBig = new BigInteger(Actor.StringToInt(sentence));
 		System.out.println("Texte biginteger à transmettre : " +texteBig.toString());
 		
 		BigInteger encrypt = alice.Encrypt(texteBig, bob.getPublicKey());
@@ -21,7 +24,9 @@ public class Main {
 		//BigInteger decrypt = bob.Decrypt(encrypt);
 		//System.out.println("Texte décrypté : " +  decrypt.toString());
 		
-		texteBig = new BigInteger("1318");
+		sentence = "Salut c'est Jacl";
+		
+		texteBig = new BigInteger(Actor.StringToInt(sentence));
 		System.out.println("Texte biginteger à transmettre : " +texteBig.toString());
 		
 		encrypt = alice.Encrypt(texteBig, bob.getPublicKey());
@@ -33,6 +38,8 @@ public class Main {
 		//System.out.println("Texte décrypté : " +  decrypt.toString());
 		
 		BigInteger message = oscar.attaque(bob.getPublicKey());
-		System.out.println("Hack : "+message);
+		System.out.println(message.toString());
+		System.out.println("Hack code : "+message);
+		System.out.println("Hack texte : "+Actor.IntToString(message.toString()));
 	}
 }
